@@ -7,7 +7,7 @@ export default function Day (){
     
     // const inputDay = 3;
     const {inputDay} = useParams();
-    
+
     // const [words, setWords] = useState([])
 
     // useEffect(() => {
@@ -22,6 +22,8 @@ export default function Day (){
     // useParams는 숫자여도 문자(string)로 인식하기 때문에 inputDay를 숫자(Number)타입으로 바꿔줄 필요가 있다.(url 주소에 들어간 숫자는 문자로 인식!) 
 
     const words = useFetch(`http://localhost:4000/words?day=${inputDay}`)
+    // Day.js와 DayList.js에서 useState와 useEffect의 반복사용을 피하기위해
+    // 해당 함수 2개를 커스텀 훅스인 useFetch에 한번 작성하고 호출하여 사용
 
     return(
         <>

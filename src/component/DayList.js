@@ -14,6 +14,8 @@ export default function DayList (){
     // },[])
 
     const days = useFetch("http://localhost:4000/days")
+    // Day.js와 DayList.js에서 useState와 useEffect의 반복사용을 피하기위해
+    // 해당 함수 2개를 커스텀 훅스인 useFetch에 한번 작성하고 호출하여 사용
 
     return(
         <ul className="list_day">
