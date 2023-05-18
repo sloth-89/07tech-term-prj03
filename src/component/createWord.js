@@ -1,13 +1,15 @@
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateWord(){
 
     const days = useFetch("http://localhost:4000/days");
+    const navigate = useNavigate();
 
     function onSubmit(e){
-        e.preventDefatul();
+        e.preventDefault();
         
         console.log(engRef.current.value)
         console.log(korRef.current.value)
@@ -16,7 +18,7 @@ export default function CreateWord(){
         fetch(`http://localhost:4000/words`, {
             method: "POST",
             headers: {
-                "Content-type": "application/json",
+                "Content-type": "application/json"
             },
             body: JSON.stringify({
                 day: dayRef.current.value,
@@ -27,6 +29,7 @@ export default function CreateWord(){
         }).then(res => {
             if(res.ok){
                 alert("단어 생성이 완료 되었습니다.")
+                navigate(`/day/${dayRef.current.value}`)
             }
         })
     }
@@ -43,18 +46,20 @@ export default function CreateWord(){
                 <input type="text" placeholder="Type IT term in English" ref={engRef}/>
             </div>
             <div className="input_area">
-                <label>한국어 의미</label>
+                <label>Korean Word</label>
                 <input type="text" placeholder="한국어 뜻을 입력하세요" ref={korRef}/>
             </div>
             <div className="input_area">
-                <label>Day 날짜선택</label>
+                <label>Day</label>
                 <select ref={dayRef}>
                     {days.map(day => (
-                        <option key={day.id} value={day.day}>{day.day}</option>
+                        <option key={day.id} value={day.day}>
+                            {day.day}
+                        </option>
                     ))}
                 </select>
             </div>
-            <button className="button">저장</button>
+            <button className="button">단어 저장</button>
         </form>
     )
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
+import Loading from "../assets/Bean Eater-1s-200px.gif";
 
 export default function DayList (){
     // const [days, setDays] = useState([])
@@ -16,6 +17,9 @@ export default function DayList (){
     const days = useFetch("http://localhost:4000/days")
     // Day.js와 DayList.js에서 useState와 useEffect의 반복사용을 피하기위해
     // 해당 함수 2개를 커스텀 훅스인 useFetch에 한번 작성하고 호출하여 사용
+    if(days.length === 0){
+        return <img src={Loading} alt="로딩 중..."/>
+    }
 
     return(
         <ul className="list_day">

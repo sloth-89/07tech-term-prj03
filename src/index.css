@@ -97,6 +97,11 @@ table td:first-child {
   background-color: firebrick;
 }
 
+.btn_del2 {
+  color: #fff;
+  background-color: firebrick;
+}
+
 button {
   padding: 10px;
   font-weight: bold;
@@ -105,6 +110,7 @@ button {
   border: 0 none;
   border-radius: 6px;
   padding: 10px 20px;
+  margin-bottom: 10px;
   color: #fff;
   background-color: dodgerblue;
 }
@@ -129,4 +135,17 @@ button {
   width: 400px;
   height: 40px;
   font-size: 20px;
+}
+
+/* 새로 추가 for CreateDay.js */
+
+.create_day_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create_day_box{
+  position: absolute;
+  top: 50%;
 }

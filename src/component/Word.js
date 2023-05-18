@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Word ({word: w}){
 
-    const [word, setWord] = useState(w)
+    const [word, setWord] = useState(w);
     const [isShow, setIsShow] = useState(false);
     const [isDone, setIsDone] = useState(word.isDone);
 
